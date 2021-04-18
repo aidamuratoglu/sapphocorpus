@@ -62,7 +62,7 @@ class Poem:
 
     def make_text_file(self):
         """Makes and saves a text file of the poem."""
-        with open(f"sappho fr {random.randint(69, 500)}", "w+") as file:
+        with open(f"sappho fr {random.randint(60, 500)}", "w+") as file:
             file.write(self.text)
     
     def __repr__(self):
@@ -73,7 +73,7 @@ class Poem:
         return f"{self.text}"
 
     def evaluate(self):
-        """Evaluates a  poem base don line length and ratio of noun phrases to 
+        """Evaluates a poem based on line length and ratio of noun phrases to 
         verbs. Line length is weighted more than ratio. Updates fitness score 
         instance variable with score.
         
@@ -95,12 +95,7 @@ class Poem:
             else:
                 self.fitness_score -= 1
         else:
-            #lines = (self.num_nouns + self.num_verbs) / self.num_lines
-            #line_score = 1 - np.linalg.norm(lines - 5)
-            #self.fitness_score += line_score
-
             line_score = ((self.num_nouns + self.num_verbs) / self.num_lines) / 5
-
             if line_score == 1:
                 line_score == 4
             if line_score > 1:

@@ -23,10 +23,12 @@ def write_poetry():
     frags = call_fragments()
     verbs = get_verbs(frags)
     nouns = get_noun_phrases(frags)
+    print("Writing poems...")
 
     while x < 10:
         num_nouns = random.randint(1, 20)
         num_verbs = random.randint(1, 20)
+        # Makes a proto-poem (nouns and verbs in a list).
         list_poem = make_list_poem(verbs, nouns, num_nouns, num_verbs)
         line_breaks = random.randint(0, 15)
         y = 0
@@ -62,8 +64,6 @@ def make_list_poem(verbs, nouns, num_nouns, num_verbs):
             # If randint is True (1), place a noun from list
             list_poem.append(random.choice(nouns))
             y += 1
-    # Shuffles contents of poem
-    random.shuffle(list_poem)
     return list_poem
     
 def call_fragments():
@@ -72,6 +72,7 @@ def call_fragments():
         Returns: 
             frags (list): list of Poems
     """
+    print("Choosing fragments...")
     # Generates a random number
     num_frag = random.randint(1, 15)
     frags = []
@@ -92,11 +93,15 @@ def get_verbs(frags):
         Returns: 
             verbs (list): list of verbs from fragments
     """
+    print("Getting verbs...")
     verbs = []
     x = 0
     while x < len(frags):
         verbs.extend(frags[x].get_verbs())
         x += 1
+    # If no verbs, start over
+    if (len(verbs) == 0):
+        write_poetry()
     return verbs
 
 def get_noun_phrases(frags):
@@ -108,11 +113,15 @@ def get_noun_phrases(frags):
         Returns: 
             nouns (list): list of noun phrases from fragments
     """
+    print("Getting nouns...")
     nouns = []
     x = 0
     while x < len(frags):
         nouns.extend(frags[x].get_noun_phrases())
         x += 1
+    # If no nouns, start over
+    if (len(nouns) == 0):
+        write_poetry()
     return nouns
 
 def get_all_scores(poems):
@@ -132,6 +141,7 @@ def choose_best_poem(poems):
         Returns:
             best poem (according to fitness scores)
     """
+    print("Choosing best poems...")
     fitness_scores = {}
     for poem in poems:
         fitness_scores[poem.evaluate()] = poem
@@ -145,16 +155,13 @@ def read_aloud(poem):
             poem (str): poem to read aloud
     """
     engine = pyttsx3.init()
-
-    # Changes voice to female.
-    voices = engine.getProperty('voices')
-    engine.setProperty('voice', voices[1].id)
-
+    engine.setProperty('rate', 150)
     engine.say(poem.text)
     engine.runAndWait()
 
 def main():
     poems = write_poetry()
+    print("Running program...")
     
     best = choose_best_poem(poems)
 
