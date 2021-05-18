@@ -2,6 +2,8 @@
 A computationally creative system that creates new verses based on Sappho's 
 poetry (trans. Jim Powell). 
 
+# How to Run
+
 To run: go to write_poetry.py. Run this program. Follow commands to view or 
 save all poems or just the best poem. During runtime, sapphocorpus builds a 
 library of poems from Jim Powell's translation of Sappho. Then, "write_poetry"
@@ -16,6 +18,8 @@ based on two factors: the ratio of noun phrases to verbs and the length of each
 line (ideally 5 words). sapphocorpus will automatically read the best poem 
 aloud at the end of its runtime.
 
+# Some Background
+
 Sappho's entire body of work exists in our contemporary moment only in 
 fragments. sapphocorpus plays on this idea, writing poems that are inherently
 fragmented--each line break also includes a "]", the academic notation for
@@ -26,6 +30,8 @@ sapphocorpus uses the framework "Sappho fr xxx," where xxx is a number between
 (which do not have titles, save for two poems where the titles have been
 preserved).
 
+# Some Reflections
+
 Working on this program has challenged me as a computer scientist to really
 think about runtime when dealing with NLP. Furthermore, I felt challenged
 when coming up with the fitness function and ways to have the system evaluate
@@ -35,6 +41,8 @@ computer scientist to push the program beyond mere generation, to implement
 the "inception" piece of Ventura's Odyssey, and to create an interface that
 was as user-friendly as possible.
 
+# Conclusions / Future Thoughts
+
 Future versions of this program would pay closer attention to the pieces of
 each poem beyond noun phrases and verbs. Ideally, the program will take
 in and analyze the speaker's relationship to the characters, places, images, 
@@ -42,7 +50,7 @@ and gods that populate Sappho's poetry. From here, the program would build
 poems based on these relationships, potentially creating a new body of Sapphic
 work that has since been lost to time.
 
-Works Cited
+# Works Cited
 
 Alan R. Champneys, P. G. H., Harry Man. (2010). The Numbers Lead a Dance: 
 Mathematics of the Sestina. Non-linear partial differential equations, 
